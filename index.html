@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script type="text/javascript" src="js/prorate.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+
+    <title>Prorating Calculator</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/ripples.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div class="navbar navbar-default">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#">Prorate Calculator</a>
+                    </div>
+                    <div class="navbar-collapse navbar-right collapse navbar-responsive-collapse">
+                      <ul class="nav navbar-nav">
+                        <div class="navbar-right">
+                          <h5 class="active">Made by Josh Stewart-Van Dusen</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    <!--END NAV-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <canvas id="doughnutChartCanvas" width="547" height="300"></canvas>
+                <h3>Your current plan is: <span id="disPlan"></span>. Your billing date is <span id="disBillDate"></span>th of every month.</h3>
+                <h3>You have <span id="disDataLeft"></span> mb of data until your next billing cycle.</h3>
+            </div>
+            <div id="doughnutChart" style="opacity: 0;">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<h1> Hello</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="modal" class="modal show">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title">Details</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                            <h3>Please Choose a Billing Date:</h3>
+                            <select class="form-control" id="billDate">
+                                <option>8th</option>
+                                <option>16th</option>
+                                <option>23rd</option>
+                                <option>29th</option>
+                            </select>
+                        </div>
+
+                    <div class="form-group">
+                            <h3>Please Choose a Plan:</h3>
+                            <select class="form-control" id="plan">
+                                <option>Ultimate 65</option>
+                                <option>Ultimate 75</option>
+                                <option>Ultimate 90</option>
+                                <option>Ultimate 105</option>
+                            </select>
+                    </div>
+                </div>
+                <!--Close modal-body-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="submit" type="button" class="btn btn-primary">Calculate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<!--<div id="modal" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h4 class="modal-title">Details</h4>
+      </div>
+
+      <div class="modal-body">
+
+      <div class="form-group">
+      <div class="col-lg-12">
+        <h3>Please Choose a Billing Date:</h3>
+        <select class="form-control" id="billDate">
+          <option>8th</option>
+          <option>16th</option>
+          <option>23rd</option>
+          <option>29th</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-12">
+        <h3>Please Choose a Plan:</h3>
+        <select class="form-control" id="plan">
+          <option>Ultimate 65</option>
+          <option>Ultimate 75</option>
+          <option>Ultimate 90</option>
+          <option>Ultimate 105</option>
+        </select>
+      </div>
+        </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+</div>
+          <!--  <h3>Please Choose a Billing Date:</h3>
+            <br>
+        <input name="rdiBillDate" type="radio" id="billDate" value="8" checked>8th</input>
+        <input name="rdiBillDate" type="radio" id="billDate" value="16">16th</input>
+        <input name="rdiBillDate" type="radio" id="billDate" value="23">23th</input>
+        <input name="rdiBillDate" type="radio" id="billDate" value="29">29th</input>
+
+              <h3>Please Choose a Plan:</h3>
+              <br>
+              <input name="rdiPlan" type="radio" id="plan" value="ult65" checked>Ult 65</input>
+              <input name="rdiPlan" type="radio" id="plan" value="ult75">Ult 75</input>
+              <input name="rdiPlan" type="radio" id="plan" value="ult90">Ult 90</input>
+              <input name="rdiPlan" type="radio" id="plan" value="ult105">Ult 105</input>
+              <br>
+              <button id="submit">Get Value</button>
+              <h3>Your current plan is: <span id="disPlan"></span>. Your billing date is <span id="disBillDate"></span>th of every month.</h3>
+          <h3>You have <span id="disDataLeft"></span> mb of data until your next billing cycle.</h3>
+          </div>
+        <div id="doughnutChart" style="opacity: 0;">
+      <canvas id="doughnutChartCanvas" width="547" height="300"></canvas>
+    </div>-->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
